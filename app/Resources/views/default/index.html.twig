@@ -23,8 +23,15 @@
                         <div class="box-body tickers-block">
                             <ul id="webticker-8">
                                 <li><span class="potential-income">Repartitions des inscris:</span></li>
-                                <li><span class="indicative-value">Abengourou <span class="text-danger">250 &#40;0.9%&nbsp;<i class="fa fa-caret-down"></i>&#41;</span></span></li>
-                                <li><span class="indicative-value">Abidjan <span class="text-success">1.250 &#40;55%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
+                                {% for region in regions %}
+                                    {% if loop.index is even %}
+                                        <li><span class="indicative-value">{{ region.name }} <span class="text-danger">{{ render(url('region_effectif',{'id': region.id})) }} &#40;{{ render(url('region_effectif_statistiques',{'id': region.id})) }}%&nbsp;&#41;</span></span></li>
+                                    {% else %}
+                                        <li><span class="indicative-value">{{ region.name }} <span class="text-success">{{ render(url('region_effectif',{'id': region.id})) }} &#40;{{ render(url('region_effectif_statistiques',{'id': region.id})) }}%&nbsp;&#41;</span></span></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <!--<li><span class="indicative-value">Abidjan <span class="text-success">1.250 &#40;55%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
                                 <li><span class="indicative-value">KNCGR 2.84 <span class="text-danger">-1.14 &#40;30.9%&nbsp;<i class="fa fa-caret-down"></i>&#41;</span></span></li>
                                 <li><span class="indicative-value">OIRHD 222.84 <span class="text-success">+61.14 &#40;0.49%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
                                 <li><span class="indicative-value">MJGTR 9.84 <span class="text-danger">-1.14 &#40;0.29%&nbsp;<i class="fa fa-caret-down"></i>&#41;</span></span></li>
@@ -36,7 +43,7 @@
                                 <li><span class="indicative-value">PLAYR 12.84 <span class="text-success">+13.14 &#40;0.9%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
                                 <li><span class="indicative-value">MNVTR 162.84 <span class="text-success">+14.14 &#40;2.9%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
                                 <li><span class="indicative-value">AWEQ 162.84 <span class="text-danger">-1.14 &#40;1.9%&nbsp;<i class="fa fa-caret-down"></i>&#41;</span></span></li>
-                                <li><span class="indicative-value">QWUBDR 12.84 <span class="text-success">+4.14 &#40;0.9%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>
+                                <li><span class="indicative-value">QWUBDR 12.84 <span class="text-success">+4.14 &#40;0.9%&nbsp;<i class="fa fa-caret-up"></i>&#41;</span></span></li>-->
                             </ul>
                         </div>
                     </div>
@@ -106,7 +113,7 @@
                 {
                     name:'Maximum',
                     type:'line',
-                    data:[33, 1255, 95, 21, 102, 24, 106, 388, 24, 30, 78, 20, 73, 118, 648],
+                    data:[{% for region in regions %}{{ render(url('region_effectif',{'id': region.id})) }}, {% endfor %} ],
                     markPoint: {
                         data: [
                             {type: 'max', name: 'Maximum'},

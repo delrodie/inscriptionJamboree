@@ -49,9 +49,9 @@ class Branches
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(name="update_at", type="datetimetz", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetimetz", nullable=true)
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * Get id
@@ -136,26 +136,26 @@ class Branches
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
      * @param \DateTime $updateAt
      *
      * @return Branches
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 }

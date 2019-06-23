@@ -10,4 +10,34 @@ namespace AppBundle\Repository;
  */
 class InscriptionsRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Effectif total des participants
+     *
+     */
+    public function findEffectifGlobal()
+    {
+        return $this->createQueryBuilder('i')
+                    ->select('count(i.id)')
+                    ->where('i.cpmTransStatus = :ok')
+                    ->setParameter('ok', 'ACCEPTED')
+                    ->getQuery()->getSingleScalarResult()
+            ;
+    }
+    /**
+     * Effectif des participants par region
+     * RegionController::indexAction
+     */
+    public function findEffectifByRegion($region)
+    {
+        return $this->createQueryBuilder('i')
+                    ->select('count(i.id)')
+                    ->where('i.region = :region')
+                    ->andWhere('i.cpmTransStatus = :ok')
+                    ->setParameters([
+                        'region' => $region,
+                        'ok' => 'ACCEPTED'
+                    ])
+                    ->getQuery()->getSingleScalarResult()
+            ;
+    }
 }

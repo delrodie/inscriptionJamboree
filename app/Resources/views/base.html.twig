@@ -73,10 +73,7 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="data.html">Louveteau</a></li>
-                                    <li><a href="#">Eclaireur</a></li>
-                                    <li><a href="#">Cheminot</a></li>
-                                    <li><a href="#">Routier</a></li>
+                                    {{ render(url('branche')) }}
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -88,12 +85,7 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="region.html">Abengourou</a></li>
-                                    <li><a href="pages/ico/ico-roadmap-timeline.html">Abidjan</a></li>
-                                    <li><a href="pages/ico/ico-progress.html">Progress Bar</a></li>
-                                    <li><a href="pages/ico/ico-details.html">Details</a></li>
-                                    <li><a href="pages/ico/ico-listing.html">ICO Listing</a></li>
-                                    <li><a href="pages/ico/ico-filter.html">ICO Listing - Filters</a></li>
+                                    {{ render(url('region')) }}
                                 </ul>
                             </li>
                         </ul>

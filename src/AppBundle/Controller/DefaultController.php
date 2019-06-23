@@ -13,9 +13,34 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $regions = $em->getRepository("AppBundle:Regions")->findRegion();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'regions' => $regions,
+        ]);
+    }
+
+    /**
+     * @Route("/region", name="region")
+     */
+    public function regionAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $regions = $em->getRepository("AppBundle:Regions")->findRegion();
+        return $this->render("default/region_liste.html.twig",[
+            'regions' => $regions,
+        ]);
+    }
+
+    /**
+     * @Route("/branche", name="branche")
+     */
+    public function brancheAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $branches = $em->getRepository("AppBundle:Branches")->findAll();
+        return $this->render("default/branche_liste.html.twig",[
+            'branches' => $branches,
         ]);
     }
 }
