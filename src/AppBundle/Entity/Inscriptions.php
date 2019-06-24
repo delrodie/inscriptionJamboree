@@ -85,7 +85,7 @@ class Inscriptions
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Districts")
-     * @ORM\JoinColumn(name="district_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="disctrict_id", referencedColumnName="id")
      */
     private $district;
 

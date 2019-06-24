@@ -10,4 +10,31 @@ namespace AppBundle\Repository;
  */
 class ParoissesRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Liste des paroisses de la region
+     * RegionController::listeAction
+     */
+    public function findListeByRegion($region)
+    {
+        return $this->createQueryBuilder('p')
+                    ->where('p.region = :region')
+                    ->orderBy('p.name', 'ASC')
+                    ->setParameter('region', $region)
+                    ->getQuery()->getResult()
+            ;
+    }
+
+    /**
+     * Liste des paroisses du district
+     * DistrictController::indexAction
+     */
+    public function findListeByDistrict($district)
+    {
+        return $this->createQueryBuilder('p')
+                    ->where('p.district = :district')
+                    ->orderBy('p.name', 'ASC')
+                    ->setParameter('district', $district)
+                    ->getQuery()->getResult()
+            ;
+    }
 }

@@ -1,3 +1,3 @@
 {% for region in regions  %}
-    <li><a href="region.html">{{ region.name }}</a></li>
+    <li><a href="{{ absolute_url(path('region_effectif_globale_liste',{'id': region.id})) }}">{{ region.name }}</a></li>
 {% endfor %}

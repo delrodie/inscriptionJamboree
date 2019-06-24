@@ -32,7 +32,7 @@ class Districts
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="desciption", type="text", nullable=true)
      */
     private $description;
 
@@ -54,7 +54,7 @@ class Districts
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(name="update_at", type="datetimetz", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetimetz", nullable=true)
      */
     private $updateAt;
 
@@ -171,7 +171,7 @@ class Districts
      *
      * @return Districts
      */
-    public function setRegion(\AppBundle\Entity\Region $region = null)
+    public function setRegion(\AppBundle\Entity\Regions $region = null)
     {
         $this->region = $region;
 

@@ -10,4 +10,17 @@ namespace AppBundle\Repository;
  */
 class DistrictsRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Liste des districts
+     * RegionController::listeAction
+     */
+    public function findListeByRegion($region)
+    {
+        return $this->createQueryBuilder('d')
+                    ->where('d.region = :region')
+                    ->orderBy('d.name', 'ASC')
+                    ->setParameter('region', $region)
+                    ->getQuery()->getResult()
+            ;
+    }
 }
