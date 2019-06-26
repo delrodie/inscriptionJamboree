@@ -76,6 +76,60 @@ class InscriptionsRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
+     * Effectif des participants par genre
+     * DefaultController::indexAction
+     */
+    public function findEffectifByGender($genre)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->where('i.gender = :genre')
+            ->andWhere('i.cpmTransStatus = :ok')
+            ->setParameters([
+                'genre' => $genre,
+                'ok' => 'ACCEPTED'
+            ])
+            ->getQuery()->getSingleScalarResult()
+            ;
+    }
+
+    /**
+     * Effectif des participants adultes
+     * DefaultController::indexAction
+     */
+    public function findEffectifByAdulte()
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->where('i.branche = :categorie')
+            ->andWhere('i.cpmTransStatus = :ok')
+            ->setParameters([
+                'categorie' => 5,
+                'ok' => 'ACCEPTED'
+            ])
+            ->getQuery()->getSingleScalarResult()
+            ;
+    }
+
+    /**
+     * Effectif des participants jeunes
+     * DefaultController::indexAction
+     */
+    public function findEffectifByJeune()
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->where('i.branche < :categorie')
+            ->andWhere('i.cpmTransStatus = :ok')
+            ->setParameters([
+                'categorie' => 5,
+                'ok' => 'ACCEPTED'
+            ])
+            ->getQuery()->getSingleScalarResult()
+            ;
+    }
+
+    /**
      * Liste des participants de la region
      */
     public function findListeRegion($region)

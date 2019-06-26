@@ -16,7 +16,48 @@
 
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-12">
+                    <div class="box box-body pull-up text-center bg-success bg-deathstar-white">
+                        <div class="font-size-40 font-weight-200"><strong>{{ global|number_format(0,'','.') }}</strong></div>
+                        <div>Participants</div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xl-2 col-md-6 col-12 ">
+                    <div class="box box-body pull-up text-center">
+                        <div class="font-size-40 font-weight-200"><strong>{{ adulte|number_format(0,'','.') }}</strong></div>
+                        <div>Adultes</div>
+                    </div>
+                </div>
+                <!-- /.col -->
 
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
+
+                <div class="col-xl-2 col-md-6 col-12">
+                    <div class="box box-body pull-up text-center">
+                        <div class="font-size-40 font-weight-200"><strong>{{ jeune|number_format(0,'','.') }}</strong></div>
+                        <div>Jeunes</div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xl-2 col-md-6 col-12">
+                    <div class="box box-body pull-up text-center">
+                        <div class="font-size-40 font-weight-200 text-success"><strong>{{ homme|number_format(0,'','.') }}</strong></div>
+                        <div>Hommes</div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <!-- /.col -->
+                <div class="col-xl-2 col-md-6 col-12">
+                    <div class="box box-body pull-up text-center">
+                        <div class="font-size-40 font-weight-200 text-success"><strong>{{ femme|number_format(0,'','.') }}</strong></div>
+                        <div>Femmes</div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="box">
